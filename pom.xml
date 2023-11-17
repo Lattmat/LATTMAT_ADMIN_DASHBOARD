@@ -8,12 +8,11 @@
 		<version>3.1.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.deyhayenterprise</groupId>
-	<artifactId>mazer-admin-template</artifactId>
-	<version>2.0.0</version>
+	<groupId>solution.com.lattmat</groupId>
+	<artifactId>lattmat-admin-dashboard</artifactId>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<name>mazer-admin-template</name>
-	<description>Mazer admin template dashboard and landing page template</description>
+	<name>lattmat-admin-dashboard</name>
 
 	<properties>
 		<java.version>17</java.version>
