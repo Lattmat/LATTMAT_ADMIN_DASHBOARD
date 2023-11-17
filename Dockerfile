@@ -1,4 +1,12 @@
-FROM amazoncorretto:17-alpine
+FROM openjdk:17-jdk-slim as build
+
+#Information around who maintains the image
+MAINTAINER ZAYARLINNNAUNG
+
+# Add the application's jar to the container
+COPY target/lattmat-admin-dashboard-1.0.0.jar lattmat-admin-dashboard.jar
+
 EXPOSE 8080
-ADD target/mazer-admin-template-2.0.0.jar mazer-admin-template-2.0.0.jar
-ENTRYPOINT ["java", "-jar", "mazer-admin-template-2.0.0.jar"]
+
+#execute the application
+ENTRYPOINT ["java","-jar","/lattmat-admin-dashboard.jar"]
