@@ -1,0 +1,28 @@
+.sidebar{
+    padding: 0 1rem;
+}
+
+.sidebar-nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.sidebar-mini.sidebar-collapse .main-sidebar, .sidebar-mini.sidebar-collapse .main-sidebar::before{
+    width: 6rem;
+}
+
+.main-sidebar{
+    background: #ffffff;
+}
+
+@media (min-width: 992px){
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-left: 6rem !important;
+    }
+}
+
+.brand-link{
+    background: #ffffff !important;
+}

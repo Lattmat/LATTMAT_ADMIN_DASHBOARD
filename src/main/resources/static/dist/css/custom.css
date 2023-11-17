@@ -1,0 +1,35 @@
+@import "variable.css";
+
+.z-input-group{
+    display: flex;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius);
+    background: #fafafa;
+    height: 58px;
+}
+
+.z-input-group .z-input-wrapper{
+    margin: 0 0.9rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.z-input-group .z-input-wrapper label{
+    font-weight: unset;
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+.z-input-group .z-input-wrapper input{
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-size: var(--font-size);
+}
+
+.nav-item .nav-link{
+    padding: 1rem 1rem;
+    border-radius: 12px;
+}

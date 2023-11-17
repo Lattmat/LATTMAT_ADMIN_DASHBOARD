@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lattmat | Log in</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" type="text/css"  th:href="@{/plugins/fontawesome-free/css/all.min.css}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" type="text/css"  th:href="@{/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+  <!-- Theme style -->
+  <link rel="stylesheet" type="text/css"  th:href="@{/dist/css/adminlte.css}">
+  <link rel="stylesheet" type="text/css"  th:href="@{/dist/css/custom.css}">
+  <link rel="stylesheet" type="text/css"  th:href="@{/dist/css/pages/login.css}">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+
+  <div th:if="${param.error}" class="alert alert-danger">
+    Invalid username and password.
+  </div>
+
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+
+      <div class="d-flex justify-content-center">
+        <img th:src="@{/img/logo.png}" height="53px" alt="Logo">
+      </div>
+
+      <p class="login-box-msg text-dark py-2 pb-3">Get Started with <span class="text-primary">Lattmat</span></p>
+
+      <form th:action="@{/login}" method="post">
+
+        <div class="z-input-group mb-4">
+          <img th:src="@{/img/svg/sms.svg}" width="24px" alt="Email">
+          <div class="z-input-wrapper">
+            <label for="email">Mail</label>
+            <input type="email" id="email" name="username" class="z-form-control" placeholder="Enter your email address">
+          </div>
+        </div>
+
+        <div class="z-input-group mb-4">
+          <img th:src="@{/img/svg/lock.svg}" width="24px" alt="Password">
+          <div class="z-input-wrapper">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="z-form-control" placeholder="Enter your password">
+          </div>
+          <img th:src="@{/img/svg/eye-slash.svg}" id="hiddenLogo" width="16px" alt="Hidden" onclick="togglePasswordField()">
+        </div>
+
+        <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-block" disabled>Log In</button>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+<script th:src="@{/dist/js/pages/login.js}"></script>
+
+</body>
+</html>

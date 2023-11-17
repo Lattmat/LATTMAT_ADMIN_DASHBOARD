@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=LATTMAT_ADMIN_DB;encrypt=true;trustServerCertificate=true;
+    username: sa
+    password: 123@ace
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2008Dialect
+
+server:
+  port: 8080
