@@ -9,42 +9,59 @@ let specialLetterWarn = document.getElementById("specialLetterWarn");
 
 function togglePasswordField(){
 
-    // change field type
-    toggleFieldType("newPassword")
+    let passwordField = document.getElementById('newPassword');
+    passwordField.type = passwordField.type === 'password' ? 'text': 'password';
 
-    // change logo image
-    toggleLogo("hiddenLogo");
+    let logoImg = document.getElementById('hiddenLogo');
+    logoImg.src = passwordField.type === 'password' ?
+        "/img/svg/eye-slash.svg": "/img/svg/eye.svg";
 }
 function toggleRetypePasswordField(){
 
-    // change field type
-    toggleFieldType("retypePassword")
-
-    // change logo image
-    toggleLogo("retypeHiddenLogo")
-}
-
-function toggleFieldType(id){
-    let passwordField = document.getElementById(id);
+    let passwordField = document.getElementById('retypePassword');
     passwordField.type = passwordField.type === 'password' ? 'text': 'password';
-}
 
-function toggleLogo(id){
-    let logoImg = document.getElementById(id);
-    logoImg.src = logoImg.type === 'password' ?
+    let logoImg = document.getElementById('retypeHiddenLogo');
+    logoImg.src = passwordField.type === 'password' ?
         "/img/svg/eye-slash.svg": "/img/svg/eye.svg";
 }
 
+let isStrongPassword = false;
 let newPassword = '';
 let retypePassword = '';
+
 document.getElementById("newPassword").addEventListener("keyup", ev => {
     newPassword = document.getElementById("newPassword").value;
-    loginBtn.disabled = (newPassword == '') || newPassword != retypePassword;
+    loginBtn.disabled = (newPassword == '') || newPassword != retypePassword || !isStrongPassword;
+
+    checkIfValidPassword();
+    let parent = ev.target.parentElement.parentElement;
+    if(parent.classList.contains("success")){
+        parent.classList.remove("success")
+    }
+
+    if(isStrongPassword){
+        parent.classList.add("success");
+        pwdWarningTxt.hidden = true;
+    }else{
+        pwdWarningTxt.hidden = false;
+    }
+
 })
 
 document.getElementById("retypePassword").addEventListener("keyup", ev => {
+    newPassword = document.getElementById("newPassword").value;
     retypePassword = document.getElementById("retypePassword").value;
-    loginBtn.disabled = (newPassword == '') || newPassword != retypePassword;
+
+    console.log(isStrongPassword)
+    loginBtn.disabled = (newPassword == '') || (newPassword != retypePassword) || !isStrongPassword;
+
+    if(newPassword != retypePassword){
+        document.getElementById("passwordNotMatchText").hidden = false;
+    }else{
+        document.getElementById("passwordNotMatchText").hidden = true;
+    }
+
 })
 
 function resetStyle(field) {
@@ -55,34 +72,7 @@ function resetStyle(field) {
 $('#loginForm').submit(function(e) {
     e.preventDefault();
 
-    resetStyle(charLengthWarn);
-    resetStyle(capitalLetterWarn);
-    resetStyle(numberWarn);
-    resetStyle(specialLetterWarn);
-
-    let isValid = true;
-    let password = document.getElementById("newPassword").value;
-
-    if(password.length < 8){
-        isValid = false;
-        charLengthWarn.style.color = "red";
-        charLengthWarn.style.fontWeight = "bold";
-    }
-    if(!containsUppercase(password)){
-        isValid = false;
-        capitalLetterWarn.style.color = "red";
-        capitalLetterWarn.style.fontWeight = "bold";
-    }
-    if(!hasNumber(password)){
-        isValid = false
-        numberWarn.style.color = "red";
-        numberWarn.style.fontWeight = "bold";
-    }
-    if(!containsSpecialChar(password)){
-        isValid = false;
-        specialLetterWarn.style.color = "red";
-        specialLetterWarn.style.fontWeight = "bold";
-    }
+    let isValid = checkIfValidPassword();
 
     if(isValid){
         this.submit();
@@ -90,6 +80,41 @@ $('#loginForm').submit(function(e) {
         pwdWarningTxt.hidden = false
     }
 });
+
+function checkIfValidPassword() {
+
+    isStrongPassword = true;
+
+    resetStyle(charLengthWarn);
+    resetStyle(capitalLetterWarn);
+    resetStyle(numberWarn);
+    resetStyle(specialLetterWarn);
+
+    let password = document.getElementById("newPassword").value;
+
+    if(password.length < 8){
+        isStrongPassword = false;
+        charLengthWarn.style.color = "red";
+        charLengthWarn.style.fontWeight = "bold";
+    }
+    if(!containsUppercase(password)){
+        isStrongPassword = false;
+        capitalLetterWarn.style.color = "red";
+        capitalLetterWarn.style.fontWeight = "bold";
+    }
+    if(!hasNumber(password)){
+        isStrongPassword = false
+        numberWarn.style.color = "red";
+        numberWarn.style.fontWeight = "bold";
+    }
+    if(!containsSpecialChar(password)){
+        isStrongPassword = false;
+        specialLetterWarn.style.color = "red";
+        specialLetterWarn.style.fontWeight = "bold";
+    }
+
+    return isStrongPassword;
+}
 
 function containsUppercase(str) {
     return /[A-Z]/.test(str);

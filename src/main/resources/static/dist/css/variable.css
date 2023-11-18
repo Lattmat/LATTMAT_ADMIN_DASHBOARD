@@ -16,7 +16,8 @@
     --primary-soft: #5570F1;
     --primary-dark: #5B6EC6;
     --secondary: #6c757d;
-    --success: #28a745;
+    /*--success: #28a745;*/
+    --success: #32936F;
     --info: #17a2b8;
     --warning: #ffc107;
     --danger: #F57E77;

@@ -47,7 +47,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" class="z-form-control" placeholder="Enter your password">
           </div>
-          <img th:src="@{/img/svg/eye-slash.svg}" id="hiddenLogo" width="16px" alt="Hidden" onclick="togglePasswordField()">
+          <img th:src="@{/img/svg/eye-slash.svg}" class="cursor-pointer" id="hiddenLogo" width="16px" alt="Hidden" onclick="togglePasswordField()">
         </div>
 
         <button type="submit" id="loginBtn" class="btn btn-lg btn-primary btn-block" disabled>Log In</button>

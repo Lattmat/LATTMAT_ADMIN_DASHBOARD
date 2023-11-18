@@ -16,20 +16,32 @@
     flex-direction: column;
 }
 
+.z-input-group.success{
+    border: 2px solid var(--success);
+}
+
 .z-input-group .z-input-wrapper label{
     font-weight: unset;
     font-size: var(--font-size-sm);
     margin: 0;
 }
 
-.z-input-group .z-input-wrapper input{
+.z-input-group .z-input-wrapper .z-form-control{
     border: 0;
     outline: none;
     background: transparent;
     font-size: var(--font-size);
 }
 
+.z-input-group .z-input-wrapper .z-form-control .success{
+    border: 1px solid green;
+}
+
 .nav-item .nav-link{
     padding: 1rem 1rem;
     border-radius: 12px;
+}
+
+.cursor-pointer:hover{
+    cursor: pointer;
 }
