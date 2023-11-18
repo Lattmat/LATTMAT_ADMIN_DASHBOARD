@@ -17,7 +17,13 @@
 }
 
 .z-input-group.success{
-    border: 2px solid var(--success);
+    border: 1px solid var(--success);
+    background-color:  rgb(from var(--success) r g b / 7%);
+}
+
+.z-input-group.error{
+    border: 1px solid var(--danger);
+    background-color:  rgb(from var(--danger) r g b / 7%);
 }
 
 .z-input-group .z-input-wrapper label{
@@ -31,10 +37,6 @@
     outline: none;
     background: transparent;
     font-size: var(--font-size);
-}
-
-.z-input-group .z-input-wrapper .z-form-control .success{
-    border: 1px solid green;
 }
 
 .nav-item .nav-link{

@@ -39,27 +39,42 @@ document.getElementById("newPassword").addEventListener("keyup", ev => {
     if(parent.classList.contains("success")){
         parent.classList.remove("success")
     }
+    if(parent.classList.contains("error")){
+        parent.classList.remove("error")
+    }
 
     if(isStrongPassword){
         parent.classList.add("success");
         pwdWarningTxt.hidden = true;
     }else{
+        parent.classList.add("error");
         pwdWarningTxt.hidden = false;
     }
 
 })
 
 document.getElementById("retypePassword").addEventListener("keyup", ev => {
+
+    let parent = ev.target.parentElement.parentElement;
+
+    if(parent.classList.contains("success")){
+        parent.classList.remove("success")
+    }
+    if(parent.classList.contains("error")){
+        parent.classList.remove("error")
+    }
+
     newPassword = document.getElementById("newPassword").value;
     retypePassword = document.getElementById("retypePassword").value;
 
-    console.log(isStrongPassword)
     loginBtn.disabled = (newPassword == '') || (newPassword != retypePassword) || !isStrongPassword;
 
     if(newPassword != retypePassword){
         document.getElementById("passwordNotMatchText").hidden = false;
+        parent.classList.add("error");
     }else{
         document.getElementById("passwordNotMatchText").hidden = true;
+        parent.classList.add("success");
     }
 
 })
@@ -90,27 +105,39 @@ function checkIfValidPassword() {
     resetStyle(numberWarn);
     resetStyle(specialLetterWarn);
 
+
+    charLengthWarn.style.fontWeight = "bold";
+    capitalLetterWarn.style.fontWeight = "bold";
+    numberWarn.style.fontWeight = "bold";
+    specialLetterWarn.style.fontWeight = "bold";
+
     let password = document.getElementById("newPassword").value;
 
     if(password.length < 8){
         isStrongPassword = false;
-        charLengthWarn.style.color = "red";
-        charLengthWarn.style.fontWeight = "bold";
+        charLengthWarn.style.color = "var(--danger)";
+    }else{
+        charLengthWarn.style.color = "var(--success)";
     }
+
     if(!containsUppercase(password)){
         isStrongPassword = false;
-        capitalLetterWarn.style.color = "red";
-        capitalLetterWarn.style.fontWeight = "bold";
+        capitalLetterWarn.style.color = "var(--danger)";
+    }else{
+        capitalLetterWarn.style.color = "var(--success)";
     }
     if(!hasNumber(password)){
         isStrongPassword = false
-        numberWarn.style.color = "red";
-        numberWarn.style.fontWeight = "bold";
+        numberWarn.style.color = "var(--danger)";
+    }else{
+        numberWarn.style.color = "var(--success)";
     }
+
     if(!containsSpecialChar(password)){
         isStrongPassword = false;
-        specialLetterWarn.style.color = "red";
-        specialLetterWarn.style.fontWeight = "bold";
+        specialLetterWarn.style.color = "var(--danger)";
+    }else{
+        specialLetterWarn.style.color = "var(--success)";
     }
 
     return isStrongPassword;
