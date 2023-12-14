@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import solution.com.lattmat.lattmatadmindashboard.enumeration.ManagerRoleType;
+import solution.com.lattmat.enumeration.UserRoleType;
 
 import java.util.Set;
 import java.util.UUID;
@@ -13,19 +13,19 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ManagerRole {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Enumerated(EnumType.STRING)
-    private ManagerRoleType roleType;
+    private UserRoleType roleType;
 
-    @ManyToMany(mappedBy = "managerRoles")
-    private Set<Manager> managerList;
+    @ManyToMany(mappedBy = "roles")
+    private Set<Users> userList;
 
-    public ManagerRole(ManagerRoleType roleType){
+    public Role(UserRoleType roleType){
         this.roleType = roleType;
     }
 }

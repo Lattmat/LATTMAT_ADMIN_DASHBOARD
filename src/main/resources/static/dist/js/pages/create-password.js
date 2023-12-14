@@ -143,7 +143,7 @@ function checkIfValidPassword() {
     return isStrongPassword;
 }
 
-function containsUppercase(str) {
+function conta  insUppercase(str) {
     return /[A-Z]/.test(str);
 }
 

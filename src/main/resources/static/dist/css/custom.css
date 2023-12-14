@@ -39,9 +39,117 @@
     font-size: var(--font-size);
 }
 
-.nav-item .nav-link{
-    padding: 1rem 1rem;
+body{
+    background-color: var(--light);
+}
+
+/****************************************************/
+/* NAV SIDEBAR */
+/****************************************************/
+.nav-sidebar .nav-item > .nav-link {
+    margin-bottom: 0 !important;
+    padding: 0.8rem 1rem;
     border-radius: 12px;
+}
+.nav-sidebar .nav-item > .nav-link.active:hover {
+    background-color: var(--primary-100) !important;
+}
+
+.nav-sidebar .nav-item > .nav-link:hover {
+    background-color: var(--primary-10) !important;
+}
+
+.nav-sidebar > .nav-item .nav-icon {
+    font-size: 1.2rem;
+    margin-right: 0.7rem;
+    text-align: center;
+    width: unset;
+}
+
+.brand{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.brand .brand-image{
+    width: 48px;
+    height: 48px;
+}
+
+.sidebar{
+    box-sizing: border-box;
+    margin-top: 1vh !important;
+    height: 87vh !important;
+}
+
+
+/****************************************************/
+/* MAIN HEADER */
+/****************************************************/
+.main-header{
+    top: 20px !important;
+    left: 20px !important;
+    right: 20px !important;
+    border-radius: var(--border-radius-lg);
+    padding: 15px 5px;
+    background-color: var(--white-transparent);
+}
+
+.nav-item.user-info{
+    margin-left: 10px !important;
+    border-left: 1px solid var(--black-100);
+}
+
+.nav-item.user-info .nav-link{
+    display: flex !important;
+    align-items: center;
+}
+
+.nav-item.user-info .nav-link .login-user{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.nav-item.user-info .nav-link .login-user .username{
+    color: var(--black-50);
+    font-weight: bold;
+    font-size: var(--font-size);
+}
+
+.nav-item.user-info .nav-link .login-user .userId{
+    color: var(--black-10);
+    font-size: var(--font-size-sm);
+}
+
+.nav-item.user-info .nav-link .login-user p{
+    margin: 0;
+    padding: 0;
+}
+
+
+/****************************************************/
+/* CONTENT WRAPPER */
+/****************************************************/
+.content-wrapper{
+    margin-top: 6rem !important;
+    /* margin-left: 20px !important; */
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--light);
+}
+
+
+.ico-sm{
+    width: 24px;
+    height: 24px;
+}
+
+.ico-xsm{
+    width: 18px;
 }
 
 .cursor-pointer:hover{
